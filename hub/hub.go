@@ -1,15 +1,35 @@
 package hub
 
-import "time"
+import (
+	"github.com/cloverzrg/metrics-hub/consul"
+	"github.com/cloverzrg/metrics-hub/logger"
+	"time"
+)
 
 var metricsHub = make(map[string]*JobMetrics)
 
 func AddJobMetrics(jobName string, data []byte, groupingKey map[string]string) (err error) {
-	metricsHub[jobName] = &JobMetrics{
-		Data:        data,
-		PushTime:    time.Now(),
-		GroupingKey: groupingKey,
+	var application = groupingKey["application"]
+	if application == "" {
+		application = "novadax"
 	}
+	// 注册服务
+	if metricsHub[jobName] == nil {
+		err := consul.JobRegister(jobName, application, groupingKey)
+		if err != nil {
+			logger.Errorf("register job metrics error: %s", err)
+		}
+		metricsHub[jobName] = &JobMetrics{
+			Data:        data,
+			PushTime:    time.Now(),
+			JobName:     jobName,
+			Application: application,
+			GroupingKey: groupingKey,
+		}
+	} else {
+		metricsHub[jobName].Update(data)
+	}
+
 	return err
 }
 

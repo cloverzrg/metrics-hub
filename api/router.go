@@ -2,6 +2,7 @@ package api
 
 import (
 	"github.com/cloverzrg/metrics-hub/api/controller"
+	"github.com/cloverzrg/metrics-hub/config"
 	"github.com/cloverzrg/metrics-hub/logger"
 	"github.com/gin-gonic/gin"
 )
@@ -9,6 +10,7 @@ import (
 func SetRoute(r *gin.Engine ) {
 	g := r.Group("/metrics")
 
+	g.GET("", controller.Index)
 	// push
 	g.POST("/:job", controller.Push)
 	g.POST("/:job/*groupKV", controller.Push)
@@ -23,5 +25,5 @@ func Serve() error {
 	r.Use(gin.Recovery())
 	r.Use(gin.LoggerWithWriter(logger.Entry.Writer()))
 	SetRoute(r)
-	return r.Run(":8080")
+	return r.Run(config.Http.Listen)
 }

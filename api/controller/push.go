@@ -27,13 +27,13 @@ func Push(c *gin.Context) {
 	bytes, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
 		logger.Error(err)
-		c.JSON(500, err)
+		c.String(500, err.Error())
 		return
 	}
 	err = hub.AddJobMetrics(job, bytes, groupKV)
 	if err != nil {
 		logger.Error(err)
-		c.JSON(500, err)
+		c.String(500, err.Error())
 		return
 	}
 
