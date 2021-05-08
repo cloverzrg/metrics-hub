@@ -27,7 +27,7 @@ func Register(serviceName string) (err error) {
 	check := api.AgentServiceCheck{
 		CheckID:                        checkId,
 		Interval:                       "15s",
-		HTTP:                           fmt.Sprintf("%s/metrics", config.Http.ExternalUrl),
+		HTTP:                           fmt.Sprintf("%s/healthy", config.Http.ExternalUrl),
 		DeregisterCriticalServiceAfter: "45s",
 	}
 	server := api.AgentServiceRegistration{

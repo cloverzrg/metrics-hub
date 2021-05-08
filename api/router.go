@@ -10,7 +10,6 @@ import (
 func SetRoute(r *gin.Engine ) {
 	g := r.Group("/metrics")
 
-	g.GET("", controller.Index)
 	// push
 	g.POST("/job/:job", controller.Push)
 	g.POST("/job/:job/*groupKV", controller.Push)
@@ -18,6 +17,8 @@ func SetRoute(r *gin.Engine ) {
 	// get metrics
 	g.GET("/job/:job", controller.JobMetrics)
 	g.GET("/job/:job/healthy", controller.JobMetricsHealth)
+
+	r.GET("/healthy", controller.Index)
 }
 
 func Serve() error {
