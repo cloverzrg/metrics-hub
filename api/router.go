@@ -12,12 +12,12 @@ func SetRoute(r *gin.Engine ) {
 
 	g.GET("", controller.Index)
 	// push
-	g.POST("/:job", controller.Push)
-	g.POST("/:job/*groupKV", controller.Push)
+	g.POST("/job/:job", controller.Push)
+	g.POST("/job/:job/*groupKV", controller.Push)
 
 	// get metrics
-	g.GET("/:job", controller.JobMetrics)
-	g.GET("/:job/healthy", controller.JobMetricsHealth)
+	g.GET("/job/:job", controller.JobMetrics)
+	g.GET("/job/:job/healthy", controller.JobMetricsHealth)
 }
 
 func Serve() error {

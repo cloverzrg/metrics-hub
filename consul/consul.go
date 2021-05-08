@@ -43,7 +43,7 @@ func Register(serviceName string) (err error) {
 }
 
 func JobRegister(job string, application string, groupingKey map[string]string) (err error) {
-	groupingKey["metrics_path"] = fmt.Sprintf("/metrics/%s", job)
+	groupingKey["metrics_path"] = fmt.Sprintf("/metrics/job/%s", job)
 	address, err := util.GetLocalHostAddress()
 	if err != nil {
 		logger.Error(err)
@@ -56,7 +56,7 @@ func JobRegister(job string, application string, groupingKey map[string]string) 
 	check := api.AgentServiceCheck{
 		CheckID:                        checkId,
 		Interval:                       "15s",
-		HTTP:                           fmt.Sprintf("%s/metrics/%s/healthy", config.Http.ExternalUrl, job),
+		HTTP:                           fmt.Sprintf("%s/metrics/job/%s/healthy", config.Http.ExternalUrl, job),
 		DeregisterCriticalServiceAfter: "60s",
 	}
 
