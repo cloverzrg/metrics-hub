@@ -21,30 +21,30 @@ var Consul = struct {
 
 func init() {
 	var err error
-	Http.Port = 9101
-	if os.Getenv("http-port") != "" {
-		Http.Port, err = strconv.Atoi(os.Getenv("http-port"))
+	Http.Port = 9091
+	if os.Getenv("HTTP_PORT") != "" {
+		Http.Port, err = strconv.Atoi(os.Getenv("HTTP_PORT"))
 		if err != nil {
 			logger.Panic(err)
 		}
 	}
 	Http.Listen = fmt.Sprintf(":%d", Http.Port)
-	if os.Getenv("http-listen") != "" {
-		Http.Listen = os.Getenv("http-listen")
+	if os.Getenv("HTTP_LISTEN") != "" {
+		Http.Listen = os.Getenv("HTTP_LISTEN")
 	}
 	hostIP, err := util.GetLocalHostAddress()
 	if err != nil {
 		logger.Panic(err)
 	}
 	Http.ExternalUrl = fmt.Sprintf("http://%s:%d", hostIP, Http.Port)
-	if os.Getenv("http-external-url") != "" {
-		Http.ExternalUrl = os.Getenv("http-external-url")
+	if os.Getenv("HTTP_EXTERNAL_URL") != "" {
+		Http.ExternalUrl = os.Getenv("HTTP_EXTERNAL_URL")
 	}
 	Consul.Address = "127.0.0.1:8085"
-	if os.Getenv("consul-address") != "" {
-		Consul.Address = os.Getenv("consul-address")
+	if os.Getenv("CONSUL_ADDRESS") != "" {
+		Consul.Address = os.Getenv("CONSUL_ADDRESS")
 	}
-	if os.Getenv("consul-token") != "" {
-		Consul.Token = os.Getenv("consul-token")
+	if os.Getenv("CONSUL_TOKEN") != "" {
+		Consul.Token = os.Getenv("CONSUL_TOKEN")
 	}
 }
