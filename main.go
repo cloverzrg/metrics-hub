@@ -9,7 +9,7 @@ import (
 
 var (
 	BuildTime string
-	GitHead   string
+	GitMessage   string
 )
 
 
@@ -21,6 +21,6 @@ func main() {
 }
 
 func init() {
-	buildInfo := fmt.Sprintf("BuildTime: %s\nGoVersion: %s\nGitHead: %s\n", BuildTime, runtime.Version(), GitHead)
+	buildInfo := fmt.Sprintf("BuildTime: %s\nGoVersion: %s\nGitHead: %s\n", BuildTime, runtime.Version(), GitMessage)
 	fmt.Println(buildInfo)
 }

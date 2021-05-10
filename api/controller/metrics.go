@@ -26,7 +26,7 @@ func JobMetrics(c *gin.Context) {
 		c.String(500, err.Error())
 		return
 	}
-	logger.Infof("get job metrics, write %d bytes", n)
+	logger.Infof("send %s metrics, write %d bytes", job, n)
 }
 
 func JobMetricsHealth(c *gin.Context) {
