@@ -2,6 +2,15 @@
 代替prometheus pushgateway，支持集群、没有一致性冲突  
 客户端可以把 metrics-hub 当作 pushgateway 使用
 
+### 资源使用情况  
+* 容器大小  
+```
+REPOSITORY               TAG                   IMAGE ID            CREATED             SIZE
+cloverzrg/metrics-hub    latest                8441b7c11f4d        2 weeks ago         20.8MB
+```  
+* 在60个application推送的情况下，平均CPU不超过1%，内存一般不超过10M（取决于metrics的大小）
+
+
 ### 使用  
 ##### 一、部署 consul
 该步骤可参考网上教程
