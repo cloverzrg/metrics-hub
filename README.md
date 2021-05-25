@@ -1,5 +1,5 @@
 # metrics-hub  
-[![Build Status](https://drone.jeongen.com/api/badges/cloverzrg/metrics-hub/status.svg)](https://drone.jeongen.com/cloverzrg/metrics-hub)
+[![Build Status](https://drone.jeongen.com/api/badges/cloverzrg/metrics-hub/status.svg)](https://drone.jeongen.com/cloverzrg/metrics-hub)  
 代替prometheus pushgateway，支持集群、没有一致性冲突  
 客户端可以把 metrics-hub 当作 pushgateway 使用
 
