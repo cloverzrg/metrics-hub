@@ -26,7 +26,6 @@ services:
     container_name: metrics-hub
     environment:
       TZ: Asia/Shanghai
-      HTTP_EXTERNAL_URL: http://10.106.11.188:9091
       CONSUL_ADDRESS: xxx:8500
       CONSUL_TOKEN: xxx
     ports:
