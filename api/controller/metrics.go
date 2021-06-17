@@ -2,6 +2,7 @@ package controller
 
 import (
 	"bytes"
+
 	"github.com/cloverzrg/metrics-hub/hub"
 	"github.com/cloverzrg/metrics-hub/logger"
 	"github.com/gin-gonic/gin"

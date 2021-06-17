@@ -2,6 +2,7 @@ package consul
 
 import (
 	"fmt"
+
 	"github.com/cloverzrg/metrics-hub/config"
 	"github.com/cloverzrg/metrics-hub/logger"
 	"github.com/cloverzrg/metrics-hub/util"
@@ -67,7 +68,7 @@ func JobRegister(job string, application string, groupingKey map[string]string) 
 		Address: address,
 		Meta:    groupingKey,
 		Check:   &check,
-		Tags: []string{"prometheus-metrics"},
+		Tags:    []string{"prometheus-metrics"},
 	}
 	logger.Infof("register service %s to consul", serviceId)
 	err = Client.Agent().ServiceRegister(&server)

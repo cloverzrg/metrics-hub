@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
+	"runtime"
+
 	"github.com/cloverzrg/metrics-hub/api"
 	"github.com/cloverzrg/metrics-hub/logger"
-	"runtime"
 )
 
 var (
-	BuildTime string
-	GitMessage   string
+	BuildTime  string
+	GitMessage string
 )
-
 
 func main() {
 	err := api.Serve()

@@ -1,11 +1,12 @@
 package controller
 
 import (
+	"io/ioutil"
+	"strings"
+
 	"github.com/cloverzrg/metrics-hub/hub"
 	"github.com/cloverzrg/metrics-hub/logger"
 	"github.com/gin-gonic/gin"
-	"io/ioutil"
-	"strings"
 )
 
 func parseGroupingKey(str string) map[string]string {

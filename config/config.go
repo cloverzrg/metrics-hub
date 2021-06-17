@@ -2,10 +2,11 @@ package config
 
 import (
 	"fmt"
-	"github.com/cloverzrg/metrics-hub/logger"
-	"github.com/cloverzrg/metrics-hub/util"
 	"os"
 	"strconv"
+
+	"github.com/cloverzrg/metrics-hub/logger"
+	"github.com/cloverzrg/metrics-hub/util"
 )
 
 var Http = struct {

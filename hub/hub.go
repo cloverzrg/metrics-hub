@@ -1,9 +1,10 @@
 package hub
 
 import (
+	"time"
+
 	"github.com/cloverzrg/metrics-hub/consul"
 	"github.com/cloverzrg/metrics-hub/logger"
-	"time"
 )
 
 // 有并发问题
