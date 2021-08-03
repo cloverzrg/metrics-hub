@@ -4,7 +4,7 @@
 客户端可以把 metrics-hub 当作 pushgateway 使用
 
 ### 资源使用情况  
-* 容器大小  
+* 镜像大小  
 ```
 REPOSITORY               TAG                   IMAGE ID            CREATED             SIZE
 cloverzrg/metrics-hub    latest                8441b7c11f4d        2 weeks ago         20.8MB
