@@ -65,5 +65,5 @@ management.metrics.export.prometheus.pushgateway.base-url=http://metrics-hub:909
 ```
 
 
-### 常规方式、pushgateway、metrics-hub三折比较
+### 常规方式、pushgateway、metrics-hub 三者比较
 ![img](./readme-content/WX20210525-110702@2x.png)
