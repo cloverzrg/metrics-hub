@@ -14,9 +14,17 @@ node:
   location: tokyo
   cloud: oracle
 
+volumes:
+  - name: cache
+    host:
+      path: /var/docker/drone-runner/cache/gomod
+
 steps:
   - name: go-build
     image: golang:alpine
+    volumes:
+      - name: cache
+        path: /go/pkg/mod
     commands:
       - "echo \"Runner: \" ${DRONE_STAGE_MACHINE} ${DRONE_STAGE_OS} ${DRONE_STAGE_ARCH}"
       - go env
