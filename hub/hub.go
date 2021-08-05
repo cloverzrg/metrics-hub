@@ -1,19 +1,22 @@
 package hub
 
 import (
+	"sync"
 	"time"
 
 	"github.com/cloverzrg/metrics-hub/consul"
 	"github.com/cloverzrg/metrics-hub/logger"
 )
 
-// 有并发问题
 var metricsHub = make(map[string]*JobMetrics)
+var m = &sync.Mutex{}
 
 func AddJobMetrics(jobName string, data []byte, groupingKey map[string]string) (err error) {
+	m.Lock()
+	defer m.Unlock()
 	var application = groupingKey["application"]
 	if application == "" {
-		application = "novadax"
+		application = "appName"
 	}
 	// 注册服务
 	if metricsHub[jobName] == nil {
@@ -47,6 +50,8 @@ func IsHealthy(jobName string) (isHealthy bool, data *JobMetrics) {
 }
 
 func GetJobMetrics(jobName string) (data *JobMetrics, exist bool, err error) {
+	m.Lock()
+	defer m.Unlock()
 	var has bool
 	var jobMetrics *JobMetrics
 	if jobMetrics, has = metricsHub[jobName]; has {
