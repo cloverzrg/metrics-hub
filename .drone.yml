@@ -14,7 +14,7 @@ steps:
   - name: go-build
     image: golang:alpine
     commands:
-      - echo "Runner: ${DRONE_STAGE_MACHINE}"
+      - echo "Runner: $DRONE_STAGE_MACHINE"
       - go env
       - apk add --no-cache git
       - go mod download
