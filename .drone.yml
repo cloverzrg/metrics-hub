@@ -15,6 +15,8 @@ steps:
     image: golang:alpine
     commands:
       - go env
+      - echo "runner info:"
+      - env | grep DRONE
       - apk add --no-cache git
       - go mod download
       - buildflags="-X 'main.BuildTime=`TZ=\"Asia/Shanghai\" date -Iseconds`' -X 'main.GitMessage=`git --no-pager log -1 --oneline`'" && go build -ldflags "$buildflags" -o go-bin
