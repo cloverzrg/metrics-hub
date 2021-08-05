@@ -10,6 +10,10 @@ trigger:
   branch:
     - main
 
+node:
+  location: tokyo
+  cloud: oracle
+
 steps:
   - name: go-build
     image: golang:alpine
