@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func SetRoute(r *gin.Engine ) {
+func SetRoute(r *gin.Engine) {
 	g := r.Group("/metrics")
 
 	// push

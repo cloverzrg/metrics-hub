@@ -1,11 +1,13 @@
 package hub
 
 import (
+	"time"
+
 	"github.com/cloverzrg/metrics-hub/consul"
 	"github.com/cloverzrg/metrics-hub/logger"
-	"time"
 )
 
+// 有并发问题
 var metricsHub = make(map[string]*JobMetrics)
 
 func AddJobMetrics(jobName string, data []byte, groupingKey map[string]string) (err error) {
